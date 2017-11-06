@@ -1,0 +1,38 @@
+version: '2'
+services:
+  nginx:
+    build: ./nginx/
+    ports:
+      - 0.0.0.0:80:80
+    links:
+      - php
+    volumes_from:
+      - app
+
+  php:
+    build: ./php/
+    expose:
+      - 9000
+    links:
+      - mysql
+    volumes_from:
+      - app
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: project
+      DB_USER: project
+      DB_PASSWORD: project
+
+  app:
+    image: php:7.1-fpm
+    volumes:
+      - /Users/chiaraferrazza/Sviluppo/slimCodekata:/var/www/html
+    command: echo "Application Files"
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: project
+      MYSQL_USER: project
+      MYSQL_PASSWORD: project
