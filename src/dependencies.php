@@ -30,3 +30,7 @@ $container['em'] = function ($c) {
 $container['AuthController'] = function (Container $container){
     return new App\Controllers\AuthController($container);
 };
+
+$container['UserController'] = function (Container $container){
+    return new App\Controllers\UserController($container);
+};
