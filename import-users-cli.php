@@ -66,4 +66,5 @@ while (($row = fgetcsv($fh, 8192)) !== FALSE) {
     $i++;
 }
 
-echo "Process end. {$i} users imported\n";
+echo "Process end. {$i} users imported, {$j} in error\n";
+
